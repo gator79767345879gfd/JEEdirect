@@ -18,27 +18,42 @@
             padding: 20px;
         }
         h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            font-size: 2.8em;
+            margin-bottom: 15px;
         }
         p {
-            font-size: 1.6em;
-            margin-bottom: 40px;
+            font-size: 1.4em;
+            margin-bottom: 20px;
             font-weight: bold;
         }
+        #countdown {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: bold;
+            width: 80%;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #progress {
+            height: 25px;
+            width: 100%;
+            background: linear-gradient(90deg, #ff4b2b, #ffdd57, #4caf50);
+            transition: width 1s linear;
+            text-align: right;
+            color: #000;
+            font-weight: bold;
+            padding-right: 5px;
+            line-height: 25px;
+        }
         button {
-            padding: 15px 30px;
-            font-size: 1.2em;
+            padding: 12px 25px;
+            font-size: 1em;
             font-weight: bold;
             color: #fff;
             background: #ff4b2b;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -49,21 +64,67 @@
     </style>
 </head>
 <body>
-    <h1>⏳ LAST CHANCE, CHAMPION! ⏳</h1>
-    <p>You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br>
-    No excuses. No distractions. Only focus and relentless action can save you now.</p>
-    <button onclick="window.close()">Back to Study NOW</button>
+    <h1>LAST CHANCE, CHAMPION!</h1>
+    <p id="motivation">You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br>No excuses. No distractions. Only focus and relentless action can save you now.</p>
+    <div id="countdown"><div id="progress"></div></div>
+    <p id="daysLeft"></p>
+    <button onclick="closeTab()">Back to Study NOW</button>
     <script>
         const quotes = [
-            "Pain is temporary, IIT glory is forever.",
-            "Discipline now or regret forever.",
-            "Every second you waste is a second you can’t get back.",
-            "Champions are made when no one is watching.",
-            "Your future self is begging you to focus."
+            "Pain is temporary, IIT glory is forever.", "Discipline now or regret forever.",
+            "Every second you waste is a second you can’t get back.", "Champions are made when no one is watching.",
+            "Your future self is begging you to focus.", "Push beyond limits, success is waiting.",
+            "The harder you work, the luckier you get.", "One shot. One chance. Make it count.",
+            "Focus today, conquer tomorrow.", "Success demands obsession, not hesitation.",
+            "The clock is ticking; your dream won’t wait.", "Regret is heavier than effort.",
+            "Lost time can never be regained – act now.", "You can’t outrun your own potential.",
+            "Small steps every day lead to massive results.", "Turn your failures into fuel.",
+            "Excuses steal the future from the present.", "Commit to the grind or watch others succeed.",
+            "Your destiny is in your hands, not tomorrow’s.", "Every hour wasted is an opportunity lost.",
+            "Push harder than yesterday.", "Regret is a silent killer – avoid it.",
+            "Make the pain of discipline less than the pain of regret.", "Today’s efforts are tomorrow’s victories.",
+            "Stop scrolling, start building your legacy.", "Your competition never sleeps.",
+            "The best version of you is waiting on the other side of effort.", "Focus now, celebrate later.",
+            "2 years lost doesn’t define you – your actions now do.", "Sacrifice today, soar tomorrow.",
+            "Pain now brings pride later.", "Hustle beats hope without action.",
+            "Regret is louder than applause for laziness.", "Master your mind or it will master you.",
+            "Every moment counts, especially the tough ones.", "Make the coming hours your comeback.",
+            "You have one shot left – don’t waste it.", "The harder you fall, the higher you rise.",
+            "Your future self is watching – make it proud.", "Be relentless, be unstoppable.",
+            "The only thing standing between you and success is action.", "Your dream won’t wait, so why should you?",
+            "Turn regret into resolve.", "Hustle while others sleep.",
+            "Stop wishing, start doing.", "Your effort today defines your freedom tomorrow.",
+            "Lost time is the heaviest burden – shed it with focus.", "The pain of starting now is less than the pain of forever wondering.",
+            "You’ve been given a second chance – grab it.", "Every sacrifice today is a trophy tomorrow.",
+            "Let your regret fuel your fire.", "Start now or stay behind forever.",
+            "Your legacy begins with your next action.", "Obsessed today, celebrated tomorrow."
         ];
         const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        const para = document.querySelector('p');
-        para.innerHTML = "You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br><br><span style='font-size:1.8em; color:#ffdd57;'>" + randomQuote + "</span>";
+        document.getElementById('motivation').innerHTML = "You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br><br><span style='font-size:1.5em; color:#ffdd57; font-weight:bold;'>" + randomQuote + "</span>";
+
+        function closeTab() {
+            window.open('', '_self');
+            window.close();
+        }
+
+        // Countdown logic with colorful decreasing progress and percentage
+        const endDate = new Date('April 30, 2026 23:59:59').getTime();
+        const startDate = new Date('Nov 26, 2025 00:00:00').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            const totalDuration = endDate - startDate;
+
+            let progressPercent = (distance / totalDuration) * 100;
+            if(progressPercent < 0) progressPercent = 0;
+            document.getElementById('progress').style.width = progressPercent + '%';
+            document.getElementById('progress').innerText = Math.ceil(progressPercent) + '%';
+
+            const daysLeft = Math.ceil(distance / (1000 * 60 * 60 * 24));
+            document.getElementById('daysLeft').innerText = `May is ${daysLeft} days away.`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
