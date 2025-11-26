@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Last Chance, CHAMP!</title>
+    <title>Last Chance, Champion!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
         body {
@@ -18,17 +18,18 @@
             padding: 20px;
         }
         h1 {
-            font-size: 4em;
+            font-size: 4.5em;
             margin-bottom: 20px;
             animation: pulse 1.5s infinite;
         }
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.15); }
         }
         p {
-            font-size: 1.6em;
+            font-size: 2em;
             margin-bottom: 40px;
+            font-weight: bold;
         }
         button {
             padding: 15px 30px;
@@ -48,10 +49,10 @@
     </style>
 </head>
 <body>
-    <h1>⏳ LAST CHANCE, CHAMP! ⏳</h1>
+    <h1>⏳ LAST CHANCE, CHAMPION! ⏳</h1>
     <p>You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br>
     No excuses. No distractions. Only focus and relentless action can save you now.</p>
-    <button onclick="window.location.href='https://yourcoachingportal.com'">Back to Study NOW</button>
+    <button onclick="window.close()">Back to Study NOW</button>
     <script>
         const quotes = [
             "Pain is temporary, IIT glory is forever.",
@@ -62,7 +63,7 @@
         ];
         const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
         const para = document.querySelector('p');
-        para.innerHTML = "You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br><br>" + randomQuote;
+        para.innerHTML = "You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br><br><span style='font-size:2.2em; color:#ffdd57;'>" + randomQuote + "</span>";
     </script>
 </body>
 </html>
