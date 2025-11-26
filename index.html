@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Last Chance, Champ!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        p {
+            font-size: 1.6em;
+            margin-bottom: 40px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            background: #ff4b2b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff416c;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>⏳ LAST CHANCE, NEO! ⏳</h1>
+    <p>You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br>
+    No excuses. No distractions. Only focus and relentless action can save you now.</p>
+    <button onclick="window.location.href='https://yourcoachingportal.com'">Back to Study NOW</button>
+    <script>
+        const quotes = [
+            "Pain is temporary, IIT glory is forever.",
+            "Discipline now or regret forever.",
+            "Every second you waste is a second you can’t get back.",
+            "Champions are made when no one is watching.",
+            "Your future self is begging you to focus."
+        ];
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        const para = document.querySelector('p');
+        para.innerHTML = "You’ve wasted 2 years. You’re falling behind. This is it – your one shot to turn everything around.<br><br>" + randomQuote;
+    </script>
+</body>
+</html>
